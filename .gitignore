@@ -1,0 +1,5 @@
+scripts/
+server/
+Dockerfile
+package.json
+start.sh

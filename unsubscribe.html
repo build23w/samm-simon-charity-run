@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="theme-color" content="#0d1630" />
+		<meta name="color-scheme" content="dark" />
+		<meta name="robots" content="noindex, nofollow" />
+
+		<title>Unsubscribe - Samm Simon Updates</title>
+		<meta name="description" content="Unsubscribe from Samm Simon Charity Run email updates." />
+
+		<link rel="icon" href="public/gallery/samm-run-1.png" />
+		<link rel="stylesheet" href="public/styles/styles.css" />
+
+		<style>
+			/* Keep this page simple and centered. */
+			.unsub-wrap{min-height:100dvh;display:grid;place-items:center;padding:28px 0}
+			.unsub-card{width:100%;max-width:880px}
+			.unsub-status{margin:12px 0 0;font-weight:900;text-align:center}
+			.unsub-status.is-ok{color:rgba(67,227,170,.95)}
+			.unsub-status.is-warn{color:rgba(255,209,102,.95)}
+			.unsub-links{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:40px}
+		</style>
+	</head>
+	<body>
+		<a class="skip-link" href="#main">Skip to content</a>
+
+		<main id="main" class="unsub-wrap" aria-label="Unsubscribe">
+			<div class="container unsub-card">
+				<div class="email-signup-card">
+					<form action="https://api.lfbuilders.ca/sammsimon/mail/inquiry" method="post" class="email-signup-form" target="_blank" novalidate>
+						<h2 class="email-signup-title">Unsubscribe from Samm's updates</h2>
+						<p class="email-signup-subtitle">
+							Enter your email and we'll mark it as unsubscribed.
+						</p>
+
+						<input type="hidden" name="unsub" value="1" />
+
+						<div class="email-signup-row">
+							<input
+								type="email"
+								name="EMAIL"
+								id="email"
+								maxlength="120"
+								required
+								autocomplete="email"
+								inputmode="email"
+								aria-label="Email address"
+								placeholder="Enter your email address"
+								class="email-signup-input"
+							/>
+							<input type="text" name="website" tabindex="-1" autocomplete="off" class="email-signup-honeypot" aria-hidden="true" />
+							<button type="submit" class="email-signup-button">Unsubscribe</button>
+						</div>
+
+						<p class="email-signup-fine" id="status" role="status" aria-live="polite" aria-atomic="true"></p>
+					</form>
+					<div class="unsub-links" aria-label="Helpful links">
+						<a href="policy.html" style="text-decoration: none;font-size: 20px;">
+							Privacy Policy
+						</a>
+					</div>
+				</div>
+			</div>
+		</main>
+
+		<script>
+			(() => {
+				'use strict';
+
+				const form = document.querySelector('form.email-signup-form');
+				const emailInput = document.getElementById('email');
+				const status = document.getElementById('status');
+				if (!form || !emailInput || !status) return;
+
+				function decodeMaybeTwice(value) {
+					let v = String(value || '');
+					// Some systems double-encode: %2540 -> %40 -> @
+					for (let i = 0; i < 2; i++) {
+						if (!v.includes('%')) break;
+						try {
+							const next = decodeURIComponent(v);
+							if (next === v) break;
+							v = next;
+						} catch {
+							break;
+						}
+					}
+					return v;
+				}
+
+				function normalizeEmail(email) {
+					let v = String(email || '').trim();
+					v = decodeMaybeTwice(v);
+					// URLSearchParams treats '+' as space in query strings.
+					// Recover common email tags like name+tag@gmail.com.
+					if (/[\s]/.test(v) && v.includes('@')) v = v.replace(/\s+/g, '+');
+					return v;
+				}
+
+				function setStatus(message, kind) {
+					status.textContent = message || '';
+					status.classList.toggle('unsub-status', true);
+					status.classList.toggle('is-ok', kind === 'ok');
+					status.classList.toggle('is-warn', kind === 'warn');
+				}
+
+				function getPrefillEmail() {
+					// 1) Global variable support (if you inject it before this script)
+					try {
+						const v = window.UNSUBSCRIBE_EMAIL || window.unsubscribeEmail;
+						if (typeof v === 'string' && v.trim()) return v;
+					} catch {
+						// ignore
+					}
+
+					// 2) Query params support (?EMAIL= / ?email= / ?e=)
+					try {
+						const params = new URLSearchParams(window.location.search);
+						return params.get('EMAIL') || params.get('email') || params.get('e') || '';
+					} catch {
+						// ignore
+					}
+
+					// 3) Hash support (#EMAIL=...)
+					try {
+						const hash = String(window.location.hash || '').replace(/^#/, '');
+						if (!hash) return '';
+						const params = new URLSearchParams(hash);
+						return params.get('EMAIL') || params.get('email') || params.get('e') || '';
+					} catch {
+						return '';
+					}
+				}
+
+				function shouldShowSuccessFromUrl() {
+					try {
+						const params = new URLSearchParams(window.location.search);
+						return params.get('unsub') === '1' && !!(params.get('EMAIL') || params.get('email') || params.get('e'));
+					} catch {
+						return false;
+					}
+				}
+
+				// Prefill email when present.
+				const preset = normalizeEmail(getPrefillEmail());
+				if (preset) emailInput.value = preset;
+
+				// If they arrived here after submitting (GET round-trip), show success.
+				if (shouldShowSuccessFromUrl()) {
+					setStatus("You're now unsubscribed.", 'ok');
+				}
+
+				function toUrlEncodedBody(formEl, email) {
+					const fd = new FormData(formEl);
+					fd.set('EMAIL', email);
+					const params = new URLSearchParams();
+					for (const [k, v] of fd.entries()) params.append(String(k), String(v));
+					return params.toString();
+				}
+
+				// JS enhancement: submit without leaving the page, but still POST to the API.
+				form.addEventListener('submit', async (e) => {
+					const email = normalizeEmail(emailInput.value);
+					if (!email) {
+						e.preventDefault();
+						emailInput.focus();
+						setStatus('Please enter your email address.', 'warn');
+						return;
+					}
+
+					if (emailInput.checkValidity && !emailInput.checkValidity()) {
+						e.preventDefault();
+						emailInput.reportValidity?.();
+						setStatus('Please enter a valid email address.', 'warn');
+						return;
+					}
+
+					// Honeypot: silently ignore obvious bot submissions.
+					const honeypot = form.querySelector('input[name="website"]');
+					if (honeypot && String(honeypot.value || '').trim()) {
+						e.preventDefault();
+						return;
+					}
+
+					e.preventDefault();
+					setStatus('Submitting…', 'warn');
+
+					try {
+						const res = await fetch(form.action, {
+							method: 'POST',
+							headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
+							body: toUrlEncodedBody(form, email),
+							mode: 'cors',
+							credentials: 'omit',
+							redirect: 'follow',
+							keepalive: true,
+						});
+
+						// If the API blocks CORS, this will throw before here.
+						if (!res || !res.ok) throw new Error('Unsubscribe request failed');
+					} catch {
+						// Fallback: do a real form POST (will open a new tab due to target=_blank).
+						try {
+							form.submit();
+						} catch {
+							// ignore
+						}
+						return;
+					}
+
+					setStatus("You're now unsubscribed.", 'ok');
+
+					try {
+						const url = new URL(window.location.href);
+						// Prefer a lowercase param for nicer share links, but keep compatibility.
+						url.searchParams.set('email', email);
+						url.searchParams.delete('EMAIL');
+						url.searchParams.set('unsub', '1');
+						window.history.replaceState({}, '', url.toString());
+					} catch {
+						// ignore
+					}
+				});
+			})();
+		</script>
+	</body>
+</html>
