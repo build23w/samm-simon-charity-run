@@ -1,4 +1,5 @@
-scripts/
+# server-side bits never deployed to GitHub Pages
+/scripts/
 server/
 Dockerfile
 package.json

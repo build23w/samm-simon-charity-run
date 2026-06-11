@@ -127,7 +127,6 @@
 					<span class="nav-toggle-lines" aria-hidden="true"></span>
 					</button>
 					<div class="nav-links" id="navLinks">
-						<a class="nav-link" href="#countdown">Countdown</a>
 						<a class="nav-link" href="#story">Story</a>
 						<!-- <a class="nav-link" href="#share">Share</a> -->
 						<a class="nav-link" href="#care">Care</a>
@@ -1124,6 +1123,42 @@
 					</div>
 				</div>
 			</section>
+
+			<hr class="section-divider" aria-hidden="true" />
+
+			<section class="section forum-thread" id="discussion" aria-label="Community discussion">
+				<div class="container">
+					<div class="section-head">
+						<h2 class="section-title reveal">Join the conversation</h2>
+						<p class="section-sub reveal">
+							Live replies from the Home Renovation Reviews community - reply over there and it shows up here.
+						</p>
+					</div>
+					<div id="discourse-comments" class="reveal" style="min-height:120px"></div>
+					<noscript>
+						<p><a href="https://home.renovation.reviews/t/supporting-local-cancer-care-one-run-one-community/44822">Read the discussion on the forum</a></p>
+					</noscript>
+					<p class="fine" style="text-align:center;margin-top:10px">
+						<a href="https://home.renovation.reviews/t/supporting-local-cancer-care-one-run-one-community/44822" target="_blank" rel="noopener noreferrer">Open the full thread on home.renovation.reviews</a>
+					</p>
+					<script>
+						window.DiscourseEmbed = { discourseUrl: "https://home.renovation.reviews/", topicId: 44822 };
+						(function () {
+							var loaded = false;
+							function load() { if (loaded) return; loaded = true;
+								var d = document.createElement("script"); d.async = true;
+								d.src = window.DiscourseEmbed.discourseUrl + "javascripts/embed.js";
+								document.head.appendChild(d); }
+							var el = document.getElementById("discourse-comments");
+							if ("IntersectionObserver" in window) {
+								var io = new IntersectionObserver(function (e) { if (e[0].isIntersecting) { io.disconnect(); load(); } }, { rootMargin: "600px" });
+								io.observe(el);
+							} else { setTimeout(load, 2500); }
+						})();
+					</script>
+				</div>
+			</section>
+
 		</main>
 
 		<footer class="footer" aria-label="Footer">
