@@ -3,12 +3,20 @@
  * Drives: reveal animations (GSAP/ScrollTrigger w/ IO fallback), marquees,
  * counters, tilt, parallax, share/copy actions, toast, nav toggle,
  * social flyout, scroll runner, lazy YouTube embed.
+ * 2026-09-03: PAGE_URL/SHARE_TEXT now derive from the page (canonical link +
+ * body[data-share-text]) so /initiatives/ write-ups share their own URL.
  */
 (function () {
 	"use strict";
 
 	var GOFUNDME = "https://www.gofundme.com/f/2mspu-charity-run";
-	var PAGE_URL = "https://sammsimon.ca/";
+	// The canonical URL of the page being viewed, so initiative write-ups share
+	// their own address instead of the homepage. Falls back to the homepage.
+	var PAGE_URL = (function () {
+		var c = document.querySelector('link[rel="canonical"]');
+		return (c && c.href) || "https://sammsimon.ca/";
+	})();
+	var SHARE_TEXT = (document.body && document.body.getAttribute("data-share-text")) || "Samm Simon ran 251 km for cancer care.";
 	var YT_ID = "zfXIEsTBelo";
 	var reduceMotion = false;
 	try { reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch (e) {}
@@ -77,7 +85,7 @@
 				window.open("https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(PAGE_URL), "_blank", "noopener,width=640,height=480");
 			} else if ((t = e.target.closest("[data-share]"))) {
 				if (navigator.share) {
-					navigator.share({ title: document.title, text: "Samm Simon ran 251 km for cancer care.", url: PAGE_URL }).catch(function () {});
+					navigator.share({ title: document.title, text: SHARE_TEXT, url: PAGE_URL }).catch(function () {});
 				} else { copyText(PAGE_URL, "Link copied — paste it anywhere."); }
 			}
 		});

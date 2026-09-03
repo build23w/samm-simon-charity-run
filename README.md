@@ -1,19 +1,64 @@
 ## Purpose
-This repository operates the public campaign site for Samm Simon's cancer-care fundraiser.
-The run itself is complete (251 km, completed May 11, 2026), and the site now serves as an ongoing fundraising, update, and community hub.
+This repository operates the public site for **Samm Simon Charity & Community Initiatives** at
+https://sammsimon.ca (GitHub Pages, custom domain via `CNAME`).
+
+The site began as the campaign page for Samm's 251 km epic run for cancer (Stratford, Ontario to
+the Tobermory pier, completed May 11, 2026, over $35,000 raised). The run is complete and the site
+is now the permanent home for that story **and** for every charity and community initiative that
+follows it. One run started it; the mission continues.
 
 ## Mission
-- Keep attention on local cancer-care support and community impact.
+- Keep the 251 km run visible as the foundational story and flagship achievement.
+- Document every initiative with the same transparency: cause, goal, beneficiary, mechanism,
+  amount raised, date, outcome.
 - Maintain a respectful, privacy-first tone in all copy.
 - Drive supporters to key action channels:
-  - Donate via GoFundMe
-  - Follow updates via Home Renovation Reviews
+  - Donate via GoFundMe (the run's fundraiser is still open)
+  - Follow updates via Home Renovation Reviews (https://home.renovation.reviews)
   - Share campaign links and community content
 
-## Primary Outcomes
-- Sustain and grow total fundraising beyond the current 35k+ raised.
-- Keep supporters informed with clear post-run updates.
-- Encourage deeper community participation through Home Renovation Reviews.
+## Site map (do not rename any of these URLs)
+| URL | Purpose |
+| --- | --- |
+| `/` (`index.html`) | Home: hero, **Impact**, **Initiatives** timeline, Home Renovation Reviews, GoFundMe, email, the run story, care focus, route, gallery, sponsors, FAQ, forum thread |
+| `/initiatives/251-km-charity-run.html` | Case-study write-up for the flagship run |
+| `/initiatives/african-crypto-charity.html` | Write-up for the African crypto charity initiative |
+| `/policy.html` | Privacy policy |
+| `/unsubscribe.html` | Unsubscribe page (noindex) |
+| `/sitemap.xml`, `/robots.txt` | Crawl hints |
+| `public/` | Styles, scripts, gallery images |
+
+Section anchors on the home page that other sites may link to: `#community`, `#gofundme`,
+`#email`, `#story`, `#care`, `#route`, `#gallery`, `#follow`, `#sponsors`, `#faq`, `#discussion`,
+plus the newer `#impact` and `#initiatives`. Never remove an anchor.
+
+## Adding a new initiative
+Each initiative gets one simple write-up page plus a card and a timeline entry on the home page.
+No build step is involved.
+
+1. Copy `initiatives/african-crypto-charity.html` to `initiatives/<slug>.html` (lowercase,
+   hyphenated, descriptive). Update `<title>`, meta description, canonical, Open Graph, the JSON-LD
+   `Article` + `BreadcrumbList`, the hero, the sections and the "Quick facts" list.
+2. In `index.html` `#impact`, copy an `<article class="impact-card">` block. Keep the
+   `<details class="facts">` fact sheet honest. Unknown facts use `<span class="tbc">To be
+   confirmed</span>`; never guess.
+3. In `index.html` `#initiatives`, add a `<li class="timeline-item is-done">` above the
+   "Future" entry (the Future entry always stays last).
+4. Add the new URL to `sitemap.xml`.
+5. Optionally add an FAQ entry.
+6. Only mark something "Completed" when it has happened. Planned initiatives stay in the
+   "What could come next" grid with the `Not yet scheduled` tag until they are confirmed.
+
+## Facts policy
+- Never invent donors, beneficiaries, organizations, totals, dates, media coverage or partners.
+- Verified figures on the site today: 251 km; completed May 11, 2026; initial GoFundMe goal
+  $4,500; over $35,000 raised; 100% split evenly between London Health Sciences Centre – Cancer
+  Program, Stratford General Hospital (ER) and Wellspring Stratford Cancer Centre. The African crypto
+  charity initiative raised **almost $25,000** for people in Africa using $RENO coin (a Solana meme
+  coin) and was made possible by the Psionic Dream IT team; its date and beneficiary are not yet
+  published and are marked "To be confirmed" on the site.
+- The site is not a registered charity and does not collect donations or issue tax receipts; copy
+  must never imply otherwise.
 
 ## Operating Principles
 - Dignity first: no sensationalized medical storytelling.
@@ -21,40 +66,35 @@ The run itself is complete (251 km, completed May 11, 2026), and the site now se
 - Accessibility first: content should remain readable, navigable, and mobile friendly.
 - Trust first: messaging should be transparent and community-centered.
 
-## Repo Scope
-- `index.html`: Main campaign landing page and core campaign messaging.
-- `policy.html`: Privacy policy page.
-- `unsubscribe.html`: Unsubscribe information page.
-- `public/`: Frontend assets (styles, scripts, media/gallery).
-- `scripts/`: Build and tooling scripts.
-- `server/`: Server-side code and runtime support.
+## SEO rules
+- Existing URLs, anchors, asset paths, canonical tags, Open Graph tags and the `Event` JSON-LD are
+  established and indexed. Change them only with a demonstrable reason, never for tidiness.
+- The `<title>` keeps its original campaign terms first ("Samm Simon Epic Run for Cancer - 251 KM
+  Charity Run") with the broader positioning appended.
+- Link to Home Renovation Reviews with descriptive, varied anchor text; never "click here".
 
 ## Content Operations
-When updating campaign copy, prioritize these checks:
+When updating copy, prioritize these checks:
 1. Run status is accurate (completed event language).
-2. Fundraising totals are current and consistent across page sections and metadata.
-3. Home Renovation Reviews call-to-action is visible and clear.
+2. Fundraising totals are current and consistent across hero chips, trust marquee, impact card,
+   fact sheets, story cards, FAQ, footer, meta description and structured data.
+3. Home Renovation Reviews calls-to-action are visible and clear.
 4. Charity beneficiary information remains unchanged unless officially updated.
 5. Calls-to-action (Donate, Follow, Share) remain prominent.
 
 ## Technical Operations
-- Static-first architecture with a lightweight frontend.
-- Build pipeline and startup scripts live in `scripts/` and `start.sh`.
-- Deployment may run in containerized environments (`Dockerfile`).
-- Keep third-party embeds (GoFundMe, social, media) functional and performance-conscious.
+- Static-first architecture: plain HTML, one CSS file, one small script, no build step.
+- Preview locally with any static server from the repo root, e.g. `python -m http.server 4173`,
+  then open http://localhost:4173/ (root-relative image paths in the CSS need a server, not `file://`).
+- Deploys happen automatically from `main` via GitHub Pages. Stage work on a branch and review it
+  locally before merging; merging to `main` is the deploy.
+- Keep third-party embeds (GoFundMe, YouTube, CTV, Discourse forum thread) functional and
+  performance-conscious.
 
 ## Definition of Done for Site Updates
 A content or UX update is considered complete when:
 1. Messaging is factually accurate and consistent across visible sections and metadata.
 2. Key CTAs (Donate and Home Renovation Reviews) are intact and tested.
-3. No broken links or obvious visual regressions are introduced.
+3. Every internal anchor and every new link resolves; no broken links or visual regressions.
 4. Privacy-respectful tone is preserved throughout.
-
-## Maintainer Notes
-If campaign milestones change, update all related references in a single pass:
-- Hero and trust indicators
-- Story and FAQ sections
-- Footer stats
-- SEO/meta and structured data
-
-This prevents stale or conflicting campaign information from appearing on the public site.
+5. `sitemap.xml` lists every indexable page.
