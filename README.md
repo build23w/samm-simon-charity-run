@@ -40,8 +40,8 @@ No build step is involved.
    hyphenated, descriptive). Update `<title>`, meta description, canonical, Open Graph, the JSON-LD
    `Article` + `BreadcrumbList`, the hero, the sections and the "Quick facts" list.
 2. In `index.html` `#impact`, copy an `<article class="impact-card">` block. Keep the
-   `<details class="facts">` fact sheet honest. Unknown facts use `<span class="tbc">To be
-   confirmed</span>`; never guess.
+   `<details class="facts">` fact sheet honest: describe what is known, link to what is
+   verifiable, and leave out a row rather than showing a blank or a guess.
 3. In `index.html` `#initiatives`, add a `<li class="timeline-item is-done">` above the
    "Future" entry (the Future entry always stays last).
 4. Add the new URL to `sitemap.xml`.
@@ -55,8 +55,14 @@ No build step is involved.
   $4,500; over $35,000 raised; 100% split evenly between London Health Sciences Centre – Cancer
   Program, Stratford General Hospital (ER) and Wellspring Stratford Cancer Centre. The African crypto
   charity initiative raised **almost $25,000** for people in Africa using $RENO coin (a Solana meme
-  coin) and was made possible by the Psionic Dream IT team; its date and beneficiary are not yet
-  published and are marked "To be confirmed" on the site.
+  coin, the community reward token of home.renovation.reviews) and was made possible by the
+  Psionic Dream IT team; it is ONGOING (Samm and the team help those in need daily). Its start
+  date and named beneficiaries have never been published, so the site describes the cause and
+  status and links to what IS public ($RENO on Solscan, the $RENO Payment Ledger, the
+  build23w/renovation.reviews repo) instead of showing blanks. Never show "To be confirmed"
+  placeholders on a live page; describe what is known and link to what is verifiable. Its social
+  image is `public/gallery/samm-africa-charity-og.jpg` (generated from the existing ribbon
+  portrait; keep 1200x630).
 - The site is not a registered charity and does not collect donations or issue tax receipts; copy
   must never imply otherwise.
 

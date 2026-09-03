@@ -3114,6 +3114,13 @@ a.brand{text-decoration:none;color:inherit}
 }
 .tbc-panel h2{color:rgba(255,224,150,.98)}
 
+.ongoing-panel{
+	border-color:rgba(56,230,209,.36);
+	background:linear-gradient(180deg, rgba(56,230,209,.11), rgba(9,14,26,.32));
+}
+.ongoing-panel h2{color:rgba(142,255,239,.98);display:flex;align-items:center;gap:10px}
+.ongoing-panel h2 i{font-size:.85em;color:var(--brand2)}
+
 .credit{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start}
 
 .writeup-figure{margin:0;display:grid;gap:8px}
