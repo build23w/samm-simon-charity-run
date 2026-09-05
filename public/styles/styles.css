@@ -2694,37 +2694,13 @@ color-mix(in srgb, var(--brand) 2%, transparent));
 	*,*::before,*::after{transition:none !important;animation:none !important}
 }
 
-
 /* =========================================================================
-   Charity & Community Initiatives layer (added 2026-09-03)
-   Impact cards, fact sheets, timeline, future ideas, footer links and the
-   initiative write-up pages under /initiatives/. Everything below reuses the
-   existing tokens (--brand, --brand2, --card-surface, --rCard, ...).
+   Charity & Community Initiatives layer (2026-09)
+   Impact cards, the "everything so far" list, footer links and the write-up
+   pages under /initiatives/. Kept plain on purpose: no badges, no dashboards.
    ========================================================================= */
 
-.eyebrow{
-	margin:0;
-	display:inline-flex;
-	align-items:center;
-	gap:8px;
-	padding:8px 12px;
-	border-radius:999px;
-	background:rgba(56,230,209,.10);
-	border:1px solid rgba(56,230,209,.20);
-	color:rgba(234,240,255,.90);
-	font-size:12px;
-	font-weight:800;
-	letter-spacing:.14em;
-	text-transform:uppercase;
-}
-
 a.brand{text-decoration:none;color:inherit}
-
-.chips.chips-4{grid-template-columns:repeat(auto-fit, minmax(120px, 1fr))}
-.chips-4 .chip-value{font-size:13px}
-@media (min-width: 760px){
-	.chips.chips-4{grid-template-columns:repeat(4,1fr)}
-}
 
 .gfm-note{
 	margin:0 auto 18px;
@@ -2734,12 +2710,27 @@ a.brand{text-decoration:none;color:inherit}
 }
 
 .badge{display:inline-flex;align-items:center;gap:6px}
-.badge-done{background:rgba(67,227,170,.12);border-color:rgba(67,227,170,.30)}
-.badge-flag{background:rgba(139,123,255,.16);border-color:rgba(139,123,255,.34)}
-.badge-soon{background:rgba(255,209,102,.12);border-color:rgba(255,209,102,.32)}
-.badge-tbc{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.14);color:var(--muted2)}
 
-/* ---- Impact cards ---- */
+.card-wide{grid-column:1 / -1}
+
+.card .fine a,
+.impact-links a,
+.timeline-body a,
+.writeup-section a,
+.aside-card a{
+	color:rgba(56,230,209,.92);
+	font-weight:700;
+	text-decoration:none;
+	border-bottom:1px solid rgba(56,230,209,.4);
+	padding-bottom:1px;
+}
+.card .fine a:hover,
+.impact-links a:hover,
+.timeline-body a:hover,
+.writeup-section a:hover,
+.aside-card a:hover{color:#8effef;border-bottom-color:rgba(142,255,239,.75)}
+
+/* ---- What Samm has done so far ---- */
 .impact-grid{display:grid;gap:clamp(12px,2.6vw,18px)}
 
 .impact-card{
@@ -2751,16 +2742,12 @@ a.brand{text-decoration:none;color:inherit}
 	border:1px solid var(--card-stroke);
 	box-shadow:var(--shadow2);
 	transform:translateZ(0);
-	transition:
-		transform .32s cubic-bezier(.22,1,.36,1),
-		border-color .22s ease,
-		box-shadow .32s cubic-bezier(.22,1,.36,1);
+	transition:transform .32s cubic-bezier(.22,1,.36,1), border-color .22s ease;
 }
 @media (hover: hover){
 	.impact-card:hover{transform:translateY(-3px);border-color:rgba(139,123,255,.30)}
 }
 .impact-card:focus-within{border-color:rgba(56,230,209,.24)}
-.impact-card.impact-future{border-style:dashed;border-color:rgba(255,209,102,.30)}
 
 .impact-media{
 	display:block;
@@ -2769,14 +2756,7 @@ a.brand{text-decoration:none;color:inherit}
 	overflow:hidden;
 	background:rgba(9,14,26,.5);
 }
-.impact-media img{
-	position:absolute;
-	inset:0;
-	width:100%;
-	height:100%;
-	object-fit:cover;
-	transition:transform .5s ease;
-}
+.impact-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .impact-media::after{
 	content:"";
 	position:absolute;
@@ -2784,133 +2764,34 @@ a.brand{text-decoration:none;color:inherit}
 	background:linear-gradient(180deg, transparent 55%, rgba(9,14,26,.55));
 	pointer-events:none;
 }
-@media (hover: hover){
-	.impact-card:hover .impact-media img{transform:scale(1.03)}
-}
 .impact-media:focus-visible{box-shadow:inset 0 0 0 3px rgba(139,123,255,.6)}
-
-.impact-icon{
-	display:grid;
-	place-items:center;
-	min-height:132px;
-	font-size:46px;
-	color:rgba(255,255,255,.94);
-	border-bottom:1px solid rgba(255,255,255,.08);
-	text-shadow:0 10px 30px rgba(0,0,0,.4);
-}
-.impact-icon-africa{
-	background:
-		radial-gradient(60% 90% at 18% 18%, rgba(255,209,102,.34), transparent 62%),
-		radial-gradient(60% 90% at 84% 74%, rgba(56,230,209,.24), transparent 62%),
-		linear-gradient(160deg, rgba(139,123,255,.28), rgba(9,14,26,.55));
-}
-.impact-icon-future{
-	background:
-		radial-gradient(60% 90% at 18% 18%, rgba(67,227,170,.28), transparent 62%),
-		radial-gradient(60% 90% at 84% 74%, rgba(139,123,255,.22), transparent 62%),
-		linear-gradient(160deg, rgba(56,230,209,.16), rgba(9,14,26,.55));
-}
 
 .impact-body{
 	display:grid;
-	gap:12px;
-	padding:clamp(16px,3vw,22px);
+	gap:10px;
+	padding:clamp(18px,3vw,24px);
 	align-content:start;
 }
-.impact-badges{display:flex;flex-wrap:wrap;gap:8px}
+.impact-when,
+.timeline-when,
+.writeup-when{margin:0;font-size:13px;color:var(--muted2)}
 .impact-card h3{margin:0;font-size:clamp(20px,2.6vw,24px);letter-spacing:-.01em;line-height:1.2}
-.impact-card p{margin:0;color:rgba(234,240,255,.82)}
-
-.impact-stats{margin:0;padding:0;list-style:none;display:grid;gap:8px}
-.impact-stats li{
-	display:flex;
-	gap:10px;
-	align-items:flex-start;
-	color:rgba(234,240,255,.88);
-	font-weight:600;
-	font-size:14px;
-	line-height:1.5;
-}
-.impact-stats i{color:var(--brand2);margin-top:3px;width:16px;text-align:center;flex:0 0 auto}
-
-.impact-actions{display:flex;flex-wrap:wrap;gap:10px}
-.impact-actions .btn{flex:1 1 auto}
-
-/* ---- Fact sheet (details + dl) ---- */
-.facts{
-	border-radius:14px;
-	background:rgba(9,14,26,.40);
-	border:1px solid rgba(255,255,255,.10);
-	overflow:hidden;
-}
-.facts summary{
-	list-style:none;
-	cursor:pointer;
-	padding:12px 14px;
-	display:flex;
-	align-items:center;
-	justify-content:space-between;
-	gap:10px;
-	font-weight:800;
-	font-size:14px;
-}
-.facts summary::-webkit-details-marker{display:none}
-.facts summary i{color:rgba(234,240,255,.75);transition:transform .2s ease}
-.facts[open] summary i{transform:rotate(180deg)}
-.facts summary:hover{background:rgba(255,255,255,.04)}
-.facts summary:focus-visible{box-shadow:inset 0 0 0 2px rgba(139,123,255,.6)}
-
-.facts-list{margin:0;padding:0 14px 14px;display:grid;gap:8px}
-.facts-list > div{
-	display:grid;
-	grid-template-columns:118px 1fr;
-	gap:10px;
-	padding-top:8px;
-	border-top:1px solid rgba(255,255,255,.08);
-}
-.facts-list dt{
-	font-size:11px;
-	letter-spacing:.10em;
-	text-transform:uppercase;
-	font-weight:800;
-	color:rgba(234,240,255,.62);
-	padding-top:3px;
-}
-.facts-list dd{margin:0;color:rgba(234,240,255,.88);font-size:14px;line-height:1.55}
-@media (max-width: 420px){
-	.facts-list > div{grid-template-columns:1fr;gap:4px}
-}
-
-.tbc{
-	display:inline-flex;
-	align-items:center;
-	gap:6px;
-	padding:2px 9px;
-	border-radius:999px;
-	background:rgba(255,209,102,.10);
-	border:1px solid rgba(255,209,102,.28);
-	color:rgba(255,224,150,.96);
-	font-size:12px;
-	font-weight:700;
-	white-space:nowrap;
-}
-.tbc::before{content:"";width:6px;height:6px;border-radius:999px;background:var(--warn)}
-
-.transparency{
-	margin-top:clamp(16px,3vw,22px);
-	border-radius:var(--rCard);
-	background:var(--card-surface2);
-	border:1px solid rgba(255,255,255,.10);
+.impact-card p{margin:0;color:rgba(234,240,255,.82);max-width:70ch}
+.impact-links{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:4px}
+.impact-note{
+	margin:clamp(18px,3vw,26px) auto 0;
+	max-width:72ch;
+	text-align:center;
+	color:var(--muted);
 }
 
 @media (min-width: 760px){
 	.impact-grid{grid-template-columns:1fr 1fr}
 	.impact-flagship{grid-column:1 / -1;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)}
 	.impact-flagship .impact-media{aspect-ratio:auto;min-height:100%}
-	.impact-flagship .impact-body{padding:clamp(20px,3vw,28px)}
 }
 
-/* ---- Timeline ---- */
+/* ---- Everything so far ---- */
 .timeline{
 	list-style:none;
 	margin:0;
@@ -2953,7 +2834,6 @@ a.brand{text-decoration:none;color:inherit}
 }
 .timeline-item.is-future .timeline-marker{
 	background:rgba(9,14,26,.88);
-	border:1px dashed rgba(255,209,102,.55);
 	color:rgba(255,224,150,.96);
 }
 .timeline-body{
@@ -2965,69 +2845,13 @@ a.brand{text-decoration:none;color:inherit}
 	gap:8px;
 	min-width:0;
 }
-.timeline-item.is-future .timeline-body{border-style:dashed;border-color:rgba(255,209,102,.28)}
-.timeline-meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-.timeline-year{
-	font-size:12px;
-	letter-spacing:.14em;
-	text-transform:uppercase;
-	font-weight:800;
-	color:rgba(234,240,255,.70);
-}
 .timeline-body h3{margin:0;font-size:20px;letter-spacing:-.01em}
-.timeline-body p{margin:0;color:rgba(234,240,255,.82)}
+.timeline-body p{margin:0;color:rgba(234,240,255,.82);max-width:70ch}
 .timeline-links{display:flex;flex-wrap:wrap;gap:6px 18px}
-.timeline-links a{
-	color:rgba(56,230,209,.92);
-	font-weight:700;
-	text-decoration:none;
-	border-bottom:1px solid rgba(56,230,209,.4);
-	padding-bottom:2px;
-}
-.timeline-links a:hover{color:#8effef;border-bottom-color:rgba(142,255,239,.75)}
 @media (min-width: 760px){
 	.timeline::before{left:27px}
 	.timeline-item{grid-template-columns:56px 1fr;gap:18px}
 	.timeline-marker{width:56px;height:56px;font-size:20px}
-}
-
-/* ---- Future ideas (not events) ---- */
-.future-block{margin-top:clamp(20px,3.6vw,30px);display:grid;gap:14px}
-.future-head{display:grid;gap:6px;text-align:center;justify-items:center}
-.future-head h3{margin:0;font-size:20px;letter-spacing:-.01em}
-.future-grid{
-	list-style:none;
-	margin:0;
-	padding:0;
-	display:grid;
-	gap:10px;
-	grid-template-columns:repeat(2,1fr);
-}
-.future-card{
-	display:grid;
-	gap:8px;
-	justify-items:start;
-	padding:14px;
-	border-radius:16px;
-	border:1px dashed rgba(255,255,255,.18);
-	background:rgba(255,255,255,.03);
-	color:rgba(234,240,255,.80);
-}
-.future-card i{color:rgba(234,240,255,.62);font-size:18px}
-.future-title{font-weight:800;color:rgba(234,240,255,.92);line-height:1.2}
-.future-tag{
-	font-size:11px;
-	letter-spacing:.10em;
-	text-transform:uppercase;
-	font-weight:800;
-	color:rgba(255,224,150,.90);
-}
-.future-actions{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
-@media (min-width: 760px){
-	.future-grid{grid-template-columns:repeat(3,1fr)}
-}
-@media (min-width: 1024px){
-	.future-grid{grid-template-columns:repeat(6,1fr)}
 }
 
 /* ---- Footer links ---- */
@@ -3040,7 +2864,7 @@ a.brand{text-decoration:none;color:inherit}
 }
 .footer-links a:hover{color:#fff;border-bottom-color:rgba(56,230,209,.6)}
 
-/* ---- Initiative write-up pages (/initiatives/*.html) ---- */
+/* ---- Write-up pages (/initiatives/*.html) ---- */
 .writeup{padding:clamp(20px,4vw,36px) 0 clamp(40px,6vw,64px)}
 
 .breadcrumb{
@@ -3085,7 +2909,6 @@ a.brand{text-decoration:none;color:inherit}
 	text-wrap:balance;
 }
 .writeup-lede{margin:0;color:var(--muted);font-size:clamp(15px,2.2vw,18px);max-width:70ch}
-.writeup-hero .chips{margin-top:4px}
 .writeup-hero .hero-ctas{margin-top:4px;justify-content:flex-start}
 .writeup-hero .hero-ctas .btn{flex:0 1 auto}
 
@@ -3098,30 +2921,11 @@ a.brand{text-decoration:none;color:inherit}
 	border:1px solid rgba(255,255,255,.10);
 }
 .writeup-section h2{margin:0 0 10px;font-size:clamp(20px,2.8vw,26px);letter-spacing:-.01em}
-.writeup-section p{margin:0 0 10px;color:rgba(234,240,255,.84)}
+.writeup-section p{margin:0 0 10px;color:rgba(234,240,255,.84);max-width:70ch}
 .writeup-section p:last-child{margin-bottom:0}
 .writeup-section ul{margin:0 0 10px;padding-left:20px;color:rgba(234,240,255,.84)}
 .writeup-section ul:last-child{margin-bottom:0}
 .writeup-section li{margin:4px 0}
-.writeup-section a{color:rgba(56,230,209,.92);font-weight:700;text-decoration:none}
-.writeup-section a:hover{color:#8effef}
-.writeup-section .facts-list{padding:0}
-.writeup-section .facts-list > div:first-child{border-top:0;padding-top:0}
-
-.tbc-panel{
-	border-color:rgba(255,209,102,.30);
-	background:linear-gradient(180deg, rgba(255,209,102,.08), rgba(9,14,26,.32));
-}
-.tbc-panel h2{color:rgba(255,224,150,.98)}
-
-.ongoing-panel{
-	border-color:rgba(56,230,209,.36);
-	background:linear-gradient(180deg, rgba(56,230,209,.11), rgba(9,14,26,.32));
-}
-.ongoing-panel h2{color:rgba(142,255,239,.98);display:flex;align-items:center;gap:10px}
-.ongoing-panel h2 i{font-size:.85em;color:var(--brand2)}
-
-.credit{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start}
 
 .writeup-figure{margin:0;display:grid;gap:8px}
 .writeup-figure img{border-radius:14px;border:1px solid rgba(255,255,255,.10);width:100%}
@@ -3138,19 +2942,26 @@ a.brand{text-decoration:none;color:inherit}
 	background:var(--card-surface);
 	border:1px solid var(--card-stroke);
 }
-.aside-card h2{
-	margin:0 0 10px;
-	font-size:13px;
-	letter-spacing:.12em;
-	text-transform:uppercase;
-	color:rgba(234,240,255,.70);
-}
+.aside-card h2{margin:0 0 10px;font-size:16px;letter-spacing:-.01em}
 .aside-card p{margin:0 0 8px;color:rgba(234,240,255,.82);font-size:14px}
 .aside-card p:last-child{margin-bottom:0}
-.aside-card .facts-list{padding:0}
-.aside-card .facts-list > div:first-child{border-top:0;padding-top:0}
 .aside-actions{display:grid;gap:10px}
 .aside-actions .btn{width:100%}
+
+.facts-list{margin:0;padding:0;display:grid;gap:8px}
+.facts-list > div{
+	display:grid;
+	grid-template-columns:96px 1fr;
+	gap:10px;
+	padding-top:8px;
+	border-top:1px solid rgba(255,255,255,.08);
+}
+.facts-list > div:first-child{border-top:0;padding-top:0}
+.facts-list dt{font-size:13px;font-weight:600;color:var(--muted2);padding-top:1px}
+.facts-list dd{margin:0;color:rgba(234,240,255,.88);font-size:14px;line-height:1.55}
+@media (max-width: 420px){
+	.facts-list > div{grid-template-columns:1fr;gap:2px}
+}
 
 @media (min-width: 900px){
 	.writeup-grid{grid-template-columns:minmax(0,1.5fr) minmax(300px,.8fr);align-items:start}

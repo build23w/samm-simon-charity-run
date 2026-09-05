@@ -33,21 +33,24 @@ Section anchors on the home page that other sites may link to: `#community`, `#g
 plus the newer `#impact` and `#initiatives`. Never remove an anchor.
 
 ## Adding a new initiative
-Each initiative gets one simple write-up page plus a card and a timeline entry on the home page.
-No build step is involved.
+Each initiative gets one simple write-up page plus a card and a row on the home page. No build
+step, no template engine, and no filler: nothing goes on the site until it is actually happening.
 
 1. Copy `initiatives/african-crypto-charity.html` to `initiatives/<slug>.html` (lowercase,
-   hyphenated, descriptive). Update `<title>`, meta description, canonical, Open Graph, the JSON-LD
-   `Article` + `BreadcrumbList`, the hero, the sections and the "Quick facts" list.
-2. In `index.html` `#impact`, copy an `<article class="impact-card">` block. Keep the
-   `<details class="facts">` fact sheet honest: describe what is known, link to what is
-   verifiable, and leave out a row rather than showing a blank or a guess.
-3. In `index.html` `#initiatives`, add a `<li class="timeline-item is-done">` above the
-   "Future" entry (the Future entry always stays last).
+   hyphenated). Update `<title>`, meta description, canonical, Open Graph, the JSON-LD `Article`
+   and `BreadcrumbList`, then write the page in plain words.
+2. In `index.html` `#impact`, copy one `<article class="impact-card">` and write it the same way:
+   what it was for, what happened, where the money went, one or two links. No badges, no stat
+   chips, no fact sheets.
+3. In `index.html` `#initiatives`, add a `<li class="timeline-item is-done">` above the "Next" row.
 4. Add the new URL to `sitemap.xml`.
-5. Optionally add an FAQ entry.
-6. Only mark something "Completed" when it has happened. Planned initiatives stay in the
-   "What could come next" grid with the `Not yet scheduled` tag until they are confirmed.
+
+## Voice
+Write like a person telling a friend what happened. Short sentences, real numbers, contractions
+are fine. Avoid slogans, "X, not Y" constructions, lists of three with bold lead-ins, corporate
+words ("initiative" is the category name; use "run", "work", "project" in prose), uppercase
+eyebrow labels, and placeholder cards for things that don't exist yet. Say what is known, link to
+what can be checked, and leave the rest out rather than showing a blank.
 
 ## Facts policy
 - Never invent donors, beneficiaries, organizations, totals, dates, media coverage or partners.
@@ -63,8 +66,8 @@ No build step is involved.
   placeholders on a live page; describe what is known and link to what is verifiable. Its social
   image is `public/gallery/samm-africa-charity-og.jpg` (generated from the existing ribbon
   portrait; keep 1200x630).
-- The site is not a registered charity and does not collect donations or issue tax receipts; copy
-  must never imply otherwise.
+- The site is not a registered charity and does not collect donations or issue tax receipts; the
+  copy says so plainly.
 
 ## Operating Principles
 - Dignity first: no sensationalized medical storytelling.
