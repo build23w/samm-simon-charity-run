@@ -20,9 +20,10 @@ follows it. One run started it; the mission continues.
 ## Site map (do not rename any of these URLs)
 | URL | Purpose |
 | --- | --- |
-| `/` (`index.html`) | Home: hero, **Impact**, **Initiatives** timeline, Home Renovation Reviews, GoFundMe, email, the run story, care focus, route, gallery, sponsors, FAQ, forum thread |
+| `/` (`index.html`) | Home: hero, Shirtlab, **Impact**, **Initiatives** timeline, run story, care focus, route, gallery, Home Renovation Reviews, GoFundMe, email, sponsors, FAQ, forum thread |
 | `/initiatives/251-km-charity-run.html` | Case-study write-up for the flagship run |
 | `/initiatives/african-crypto-charity.html` | Write-up for the African crypto charity initiative |
+| `/initiatives/shirtlab-canadians-in-need.html` | Third chapter: Shirtlab purchases support Canadians in need |
 | `/policy.html` | Privacy policy |
 | `/unsubscribe.html` | Unsubscribe page (noindex) |
 | `/sitemap.xml`, `/robots.txt` | Crawl hints |
@@ -30,7 +31,7 @@ follows it. One run started it; the mission continues.
 
 Section anchors on the home page that other sites may link to: `#community`, `#gofundme`,
 `#email`, `#story`, `#care`, `#route`, `#gallery`, `#follow`, `#sponsors`, `#faq`, `#discussion`,
-plus the newer `#impact` and `#initiatives`. Never remove an anchor.
+plus `#impact`, `#initiatives`, and `#shirtlab`. Never remove an anchor.
 
 ## Adding a new initiative
 Each initiative gets one simple write-up page plus a card and a row on the home page. No build
@@ -42,7 +43,7 @@ step, no template engine, and no filler: nothing goes on the site until it is ac
 2. In `index.html` `#impact`, copy one `<article class="impact-card">` and write it the same way:
    what it was for, what happened, where the money went, one or two links. No badges, no stat
    chips, no fact sheets.
-3. In `index.html` `#initiatives`, add a `<li class="timeline-item is-done">` above the "Next" row.
+3. In `index.html` `#initiatives`, add a timeline row in chapter order. Use `is-current` for the latest active project. Do not add placeholder rows.
 4. Add the new URL to `sitemap.xml`.
 
 ## Voice
@@ -68,6 +69,12 @@ what can be checked, and leave the rest out rather than showing a blank.
   portrait; keep 1200x630).
 - The site is not a registered charity and does not collect donations or issue tax receipts; the
   copy says so plainly.
+
+- Shirtlab is Samm’s third charity project, now underway. Every purchase at https://shirtlab.lol
+  donates **$1 to Canadians in need**. Do not imply that the whole purchase price is donated,
+  name recipients, or publish a cumulative total without a verified update. The featured video is
+  https://www.youtube.com/shorts/0BDrN6emptU. Purchases happen on Shirtlab, separately from the
+  run’s GoFundMe. The write-up publication date is not the project’s launch date.
 
 ## Operating Principles
 - Dignity first: no sensationalized medical storytelling.
@@ -99,6 +106,13 @@ When updating copy, prioritize these checks:
   locally before merging; merging to `main` is the deploy.
 - Keep third-party embeds (GoFundMe, YouTube, CTV, Discourse forum thread) functional and
   performance-conscious.
+
+- Video buttons use `data-video-load="frameId"`; the target frame supplies `data-youtube`
+  and `data-video-title`. Players load only after a click, with a direct YouTube link for the Short.
+- Shared styles and scripts use a dated query version in every HTML page; bump it when these
+  assets change so returning visitors receive the update.
+- Reveals leave content visible by default and respect reduced motion. Keep motion subtle;
+  avoid adding marquee loops, animated counters, or scroll-driven parallax.
 
 ## Definition of Done for Site Updates
 A content or UX update is considered complete when:

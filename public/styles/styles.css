@@ -31,15 +31,6 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 
-html, body{
-	-ms-overflow-style:none; 
-	scrollbar-width:none; 
-}
-html::-webkit-scrollbar,
-body::-webkit-scrollbar{width:0;height:0}
-
-*{scrollbar-width:none}
-*::-webkit-scrollbar{width:0;height:0}
 body{
 	margin:0;
 	font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,Helvetica,sans-serif;
@@ -62,7 +53,8 @@ img{max-width:100%;height:auto;display:block}
 a{color:inherit}
 button,input{font:inherit;color:inherit}
 
-/* :focus-visible{outline:none;box-shadow:var(--focus),var(--focus2)} */
+:focus-visible{outline:2px solid var(--brand2);outline-offset:4px}
+[id]{scroll-margin-top:100px}
 
 .skip-link{
 	position:absolute;
@@ -2967,3 +2959,200 @@ a.brand{text-decoration:none;color:inherit}
 	.writeup-grid{grid-template-columns:minmax(0,1.5fr) minmax(300px,.8fr);align-items:start}
 	.writeup-aside{position:sticky;top:84px}
 }
+
+/* Shared rhythm and the Shirtlab chapter. Surfaces fade into one continuous page. */
+:root{
+    --container:min(1160px,calc(100% - 48px));
+    --section-space:clamp(48px,6vw,88px);
+    --card-surface:linear-gradient(145deg,rgba(139,123,255,.075),rgba(56,230,209,.035));
+    --card-surface2:rgba(255,255,255,.025);
+}
+body{
+    background:radial-gradient(ellipse 900px 700px at 0 0,rgba(139,123,255,.12),transparent 75%),
+        radial-gradient(ellipse 750px 850px at 100% 800px,rgba(56,230,209,.08),transparent 75%),#0d1630;
+}
+main{overflow:clip}
+.section{padding:var(--section-space) 0}
+.section-head{margin-bottom:clamp(24px,3vw,40px);gap:12px}
+.section-title{font-size:clamp(26px,3.5vw,40px);line-height:1.2;letter-spacing:-.035em}
+.section-sub{max-width:64ch;line-height:1.75}
+.section-divider{height:1px;width:var(--container);margin:0 auto;filter:none;background:linear-gradient(90deg,transparent,rgba(139,123,255,.2),rgba(56,230,209,.16),transparent)}
+.section-divider::before,.section-divider::after{display:none}
+.hero{padding:clamp(44px,6vw,80px) 0}
+.hero-grid{gap:clamp(28px,4vw,64px);align-items:center}
+.hero-copy{text-align:left}
+.kicker{font-size:13px;text-transform:none;letter-spacing:.02em;margin-bottom:18px;color:#b7c5de}
+.hero-title{font-size:clamp(36px,4vw,54px);line-height:1.08;letter-spacing:-.045em;text-wrap:balance}
+.hero-title span{display:block;color:#91dfd8}
+.hero-sub{margin:24px 0;max-width:55ch;font-size:clamp(16px,1.5vw,18px);line-height:1.8}
+.hero-copy .hero-ctas{justify-content:flex-start;gap:12px}
+.hero-copy .hero-ctas .btn{flex:0 1 auto}
+.hero-note{margin:22px 0 0;color:var(--muted2);font-size:13px;max-width:48ch}
+.hero-bg{mask-image:linear-gradient(#000,transparent)}
+.hero-orb{opacity:.15}
+.btn{min-height:48px;font-weight:600;line-height:1.45;text-align:center;white-space:normal}
+.btn-lg{min-height:52px;padding:14px 20px}
+.btn i{flex-shrink:0}
+.btn-primary{background:linear-gradient(135deg,#7864e9,#5843c7);box-shadow:0 8px 24px rgba(84,66,194,.16)}
+.video-card{border-radius:22px;box-shadow:0 20px 48px rgba(0,0,0,.22)}
+.video-top{padding:14px 18px;background:rgba(255,255,255,.025)}
+.video-caption{margin:0;padding:16px 20px;font-size:13px;color:var(--muted);line-height:1.6}
+.video-poster{align-content:center;gap:18px;background-image:linear-gradient(180deg,rgba(7,13,29,.05),rgba(7,13,29,.75)),url('/public/gallery/samm-mq-video-image-update.png')}
+.poster-text{text-align:center}
+.poster-title{font-size:clamp(18px,2vw,23px)}
+.poster-sub{font-size:13px}
+.play-circle{width:60px;height:60px;display:grid;place-items:center;border-radius:50%;background:#e9fff9;color:#0e3536;box-shadow:0 6px 30px rgba(0,0,0,.24);margin-inline:auto;font-size:20px;transition:transform .25s ease}
+.shirtlab-section{position:relative;padding-top:clamp(28px,4vw,44px)}
+.chapter-intro{display:flex;justify-content:space-between;gap:16px;margin-bottom:32px;font-size:13px;color:var(--muted2)}
+.chapter-intro span:first-child{color:#91dfd8}
+.shirtlab-feature{display:grid;grid-template-columns:minmax(0,1fr) minmax(240px,320px);align-items:center;gap:clamp(36px,7vw,100px);padding:clamp(28px,4.4vw,56px);border:1px solid rgba(97,205,197,.18);border-radius:28px;background:radial-gradient(ellipse at 0 100%,rgba(56,230,209,.08),transparent 65%),linear-gradient(135deg,rgba(255,255,255,.025),rgba(139,123,255,.04))}
+.shirtlab-copy{min-width:0}
+.project-name{display:flex;align-items:center;gap:10px;margin:0 0 18px;font-size:14px;color:#a6e7df;font-weight:600;letter-spacing:.015em}
+.shirtlab-copy h1,.shirtlab-copy h2{margin:0;max-width:14ch;font-size:clamp(34px,4.5vw,56px);line-height:1.1;letter-spacing:-.045em;text-wrap:balance}
+.shirtlab-copy h1 span,.shirtlab-copy h2 span{color:#91dfd8}
+.shirtlab-lede{font-size:17px;line-height:1.8;color:var(--muted);margin:24px 0;max-width:52ch}
+.purchase-impact{display:flex;gap:20px;align-items:center;padding:20px 0;margin:24px 0;border-top:1px solid rgba(166,231,223,.14);border-bottom:1px solid rgba(166,231,223,.14)}
+.purchase-impact strong{font-size:64px;line-height:1;letter-spacing:-.06em;color:#a6e7df;font-weight:700}
+.purchase-impact p{margin:0;color:var(--muted);font-size:15px;line-height:1.65}
+.purchase-impact a{text-underline-offset:4px}
+.shirtlab-actions{display:flex;flex-wrap:wrap;align-items:center;gap:18px 24px}
+.btn-shop{background:#a6e7df;color:#102d32;border-color:#a6e7df;box-shadow:0 8px 28px rgba(56,230,209,.09)}
+.btn-shop:hover{background:#c8f8ef;color:#102d32;border-color:#c8f8ef}
+.text-link,.text-button{font-size:14px;line-height:1.6;text-decoration:underline;text-decoration-color:rgba(166,231,223,.5);text-underline-offset:5px;color:#c3eee7}
+.text-link{display:inline-flex;gap:10px;align-items:center;min-height:44px}
+.text-button{border:0;background:transparent;padding:10px 0;cursor:pointer;text-align:left}
+.text-link:hover,.text-button:hover{color:#fff;text-decoration-color:currentColor}
+.shirtlab-share{margin:18px 0 0;font-size:13px;color:var(--muted2)}
+.shirtlab-share .text-button{font-size:inherit}
+.short-film{margin:0;min-width:0;max-width:320px;width:100%;justify-self:center}
+.short-frame{position:relative;aspect-ratio:9/16;overflow:hidden;border-radius:20px;background:#080e1b;border:1px solid rgba(255,255,255,.16);box-shadow:0 20px 48px rgba(0,0,0,.25)}
+.short-poster{position:absolute;inset:0;width:100%;height:100%;padding:0;border:0;background:#101a29;cursor:pointer}
+.short-poster img{width:100%;height:100%;object-fit:cover}
+.short-poster::after{content:'';position:absolute;inset:0;background:linear-gradient(transparent 25%,rgba(5,12,24,.3) 50%,rgba(5,12,24,.94))}
+.short-poster-content{position:absolute;z-index:1;inset:auto 20px 32px;display:grid;gap:10px;text-align:center;font-size:19px;font-weight:600;color:#fff}
+.short-poster-content .play-circle{margin-bottom:10px}
+.short-poster-content small{font-size:13px;font-weight:400;color:#d7e4e9}
+.short-poster:hover .play-circle,.video-poster:hover .play-circle{transform:scale(1.06)}
+.short-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.short-film figcaption{margin-top:14px;color:var(--muted2);font-size:12px;line-height:1.7;text-align:center}
+.short-film figcaption a{display:block;color:#b5d8d9;text-underline-offset:4px}
+.shirtlab-steps{list-style:none;padding:32px 0 0;margin:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px}
+.shirtlab-steps li{display:flex;align-items:start;gap:16px}
+.shirtlab-steps li>span{color:#8bb6bb;font-size:13px;padding-top:3px;font-variant-numeric:tabular-nums}
+.shirtlab-steps h3{margin:0 0 8px;font-size:16px;font-weight:600}
+.shirtlab-steps p{margin:0;font-size:14px;line-height:1.7;color:var(--muted2)}
+.impact-body{padding:clamp(24px,3vw,36px);gap:16px}
+.impact-card,.timeline-body,.writeup-section,.aside-card{box-shadow:none}
+.impact-grid{gap:24px}
+.impact-shirtlab{border-color:rgba(166,231,223,.22)}
+.impact-card h3{line-height:1.3}
+.impact-links{gap:6px 20px}
+.impact-links a,.timeline-links a{display:inline-flex;align-items:center;min-height:44px}
+.impact-note{margin-top:28px;line-height:1.8}
+.timeline{max-width:900px;margin-inline:auto}
+.timeline-item{margin-bottom:24px;grid-template-columns:48px minmax(0,1fr)}
+.timeline-body{padding:24px 28px;gap:10px}
+.timeline-body h3{line-height:1.35}
+.timeline-marker{box-shadow:none}
+.timeline-item.is-current .timeline-marker{background:#a6e7df;color:#102d32}
+.community-widget{padding:clamp(24px,4vw,44px);gap:36px;border-radius:24px}
+.community-copy .section-title{margin-bottom:16px}
+.community-eyebrow{text-transform:none;letter-spacing:.02em}
+.community-panel-top{flex-wrap:wrap}
+.community-actions .btn{font-size:14px}
+#gofundme .gfm-embed{width:min(100%,520px);min-width:0}
+.gfm-note{max-width:55ch}
+.email-signup{padding-top:24px}
+.email-signup-card{margin-top:0}
+.email-signup-button{color:#092d29}
+.faq-list{max-width:900px;margin-inline:auto}
+.faq-item summary{gap:16px;min-height:64px;line-height:1.5}
+.faq-item summary i{flex-shrink:0}
+.footer{margin-top:24px;background:rgba(7,10,16,.2);padding-bottom:env(safe-area-inset-bottom)}
+.footer-links a{padding:8px 0}
+.footer-actions{min-width:0}
+.writeup{padding-top:28px}
+.writeup-grid{gap:28px;margin-top:36px}
+.writeup-main{gap:24px}
+.writeup-section,.aside-card{padding:clamp(24px,3vw,32px)}
+.writeup-section p,.aside-card p{line-height:1.8}
+.writeup-section p+p{margin-top:16px}
+.shirtlab-writeup{margin-top:28px}
+.breadcrumb{flex-wrap:wrap}
+.marquee{overflow-x:auto;mask-image:none;-webkit-mask-image:none}
+.marquee-track{transform:none;flex-wrap:wrap;justify-content:center;width:auto}
+.marquee-track>[aria-hidden='true']{display:none}
+.reveal.is-revealed{animation:section-arrive .55s cubic-bezier(.2,.7,.3,1) both}
+@keyframes section-arrive{from{opacity:.65;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media (min-width:980px){.hero-grid{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)}}
+@media (max-width:1199px){.social-flyout{display:none}}
+@media (max-width:979px){
+    .hero-media{width:100%;max-width:680px;margin:auto}
+    .hero-copy{max-width:720px}
+    .shirtlab-feature{grid-template-columns:minmax(0,1fr) minmax(220px,270px);gap:28px;padding:32px}
+    .shirtlab-copy h1,.shirtlab-copy h2{font-size:clamp(34px,4.8vw,46px)}
+    .shirtlab-lede{font-size:16px}
+    .shirtlab-steps{gap:24px}
+    .nav-shell{grid-template-columns:1fr auto auto}
+    .site-nav{grid-column:3;grid-row:1}
+    .nav-cta{display:block;grid-column:2;grid-row:1}
+    .nav-links{position:fixed;left:24px;right:24px;top:74px;width:auto;max-height:calc(100dvh - 100px);overflow-y:auto}
+}
+@media (max-width:700px){
+    .shirtlab-feature{grid-template-columns:minmax(0,1fr);padding:28px;gap:32px}
+    .shirtlab-copy h1,.shirtlab-copy h2{font-size:clamp(34px,7vw,46px);max-width:18ch}
+    .short-film{max-width:288px}
+    .shirtlab-steps{grid-template-columns:1fr;gap:24px;padding-top:28px}
+    .shirtlab-steps p{max-width:48ch}
+    .shirtlab-steps li{gap:20px}
+    .chapter-intro{margin-bottom:24px;font-size:12px}
+    .chapter-intro span:last-child{text-align:right;max-width:20ch}
+    .community-widget{grid-template-columns:minmax(0,1fr)}
+    .community-branding{min-width:0}
+    .community-panel-title{overflow-wrap:anywhere}
+    .footer-grid{gap:28px}
+    .writeup-aside{position:static}
+}
+@media (max-width:480px){
+    :root{--container:calc(100% - 36px)}
+    .brand-mark{width:32px;height:32px}
+    .brand-name{font-size:14px}
+    .brand-loc{font-size:11px}
+    .nav-shell{gap:8px}
+    .nav-cta .btn{padding:10px 12px;min-height:44px;font-size:13px}
+    .nav-cta .btn i{display:none}
+    .hero-copy .hero-ctas .btn{flex-basis:100%}
+    .hero-title{font-size:clamp(34px,9vw,43px)}
+    .hero-note{font-size:12px}
+    .shirtlab-feature{padding:24px 20px;border-radius:22px}
+    .shirtlab-actions .btn{width:100%}
+    .shirtlab-actions{gap:12px}
+    .purchase-impact{gap:16px}
+    .purchase-impact strong{font-size:56px}
+    .purchase-impact p{font-size:13px}
+    .short-poster-content{inset-inline:12px}
+    .timeline-item{grid-template-columns:32px minmax(0,1fr);gap:12px}
+    .timeline-marker{width:32px;height:32px;font-size:14px;border-radius:50%}
+    .timeline::before{left:15px}
+    .timeline-body{padding:20px}
+    .timeline-body h3{font-size:18px}
+    .timeline-body p{font-size:14px}
+    .impact-flagship .impact-media{aspect-ratio:4/3}
+    .community-widget{padding:24px 18px}
+    .community-panel{padding:18px}
+    .video-top{padding:12px;font-size:13px}
+    .video-caption{padding:14px;font-size:12px}
+    .poster-sub{display:none}
+    .play-circle{width:48px;height:48px;font-size:16px}
+    .short-poster-content .play-circle{width:60px;height:60px;font-size:20px}
+    .section-title{font-size:28px}
+    .footer-bottom-row{align-items:flex-start;gap:12px;flex-direction:column}
+    .footer-actions .share-row{flex-wrap:wrap}
+}
+@media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .reveal.is-revealed{animation:none}
+}
+
+/* Quick actions also appear in the footer; keep the reading area unobstructed. */
+.social-flyout{display:none}
