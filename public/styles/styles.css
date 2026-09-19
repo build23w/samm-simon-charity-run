@@ -3156,3 +3156,118 @@ main{overflow:clip}
 
 /* Quick actions also appear in the footer; keep the reading area unobstructed. */
 .social-flyout{display:none}
+
+/* Reading surfaces: spacing groups content; borders identify controls and rows. */
+:root{--reading-rule:rgba(220,230,250,.16);--rCard:6px;--rCardSm:6px}
+body{background:#0d1630}
+.hero-bg{display:none}
+.section-head{justify-items:start;text-align:left;max-width:72ch;margin-bottom:36px}
+.section-sub{max-width:62ch}
+.section-divider{background:var(--reading-rule)}
+.btn,.btn-lg,.iconbtn,.nav-toggle,.nav-links,.nav-link,
+.email-signup-input,.email-signup-button{border-radius:6px}
+.btn-primary{box-shadow:none}
+
+/* Remove nested frames while preserving each component's grid and semantics. */
+.shirtlab-feature,.community-widget,.community-panel,.email-signup-card,
+.card,.care-card,.beneficiary-card,.impact-card,.timeline-body,
+.story-widget,.socialbar-card,.gcard,.callout,.sponsor-table-wrap,
+.writeup-hero,.writeup-section,.aside-card,.video-card,
+.route-card.route-image{
+    border:0;border-radius:0;background:transparent;box-shadow:none;
+    backdrop-filter:none;
+}
+#care .container{padding:0;border:0;border-radius:0;background:transparent;box-shadow:none;backdrop-filter:none}
+#care::before,#care::after,#care .container::before,#care .container::after,
+.care-card::after,.community-widget::before,.writeup-hero::after,
+.sponsor-table-wrap::before,.route-card::before,.route-card::after{display:none}
+.card:hover,.care-card:hover,.beneficiary-card:hover,.impact-card:hover,
+.story-widget:hover,.socialbar-card:hover,.video-card:hover,.gcard:hover{
+    transform:none;filter:none;box-shadow:none;
+}
+.shirtlab-feature{padding:0;gap:clamp(32px,6vw,80px)}
+.short-frame{border:0;border-radius:6px;box-shadow:none}
+.video-frame,.impact-media,.gimg,.story-widget-frame,.story-widget-thumb,
+.route-img,.writeup-figure img{border-radius:6px;box-shadow:none}
+.video-top{padding:0 0 14px;background:transparent;border:0}
+.video-caption{padding:16px 0 0}
+
+.impact-grid,.story-grid,.story-media-grid,.care-grid,.beneficiary-grid{gap:32px}
+.impact-card{overflow:visible;align-content:start}
+.impact-body{padding:24px 0 0;gap:16px}
+.impact-card:not(.impact-flagship){border-top:1px solid var(--reading-rule)}
+.impact-flagship{gap:32px}
+.impact-flagship .impact-body{padding:0}
+.impact-note{text-align:left;margin:32px 0 0;max-width:72ch;font-size:14px}
+.card,.care-card,.beneficiary-card{padding:24px 0 0;border-top:1px solid var(--reading-rule)}
+.card p,.care-card p{max-width:62ch;line-height:1.8}
+.beneficiary-head{justify-items:start;text-align:left;margin-top:48px}
+.beneficiary-grid{margin-top:24px}
+.beneficiary-name{font-weight:700;line-height:1.4}
+.ribbon-badge{background:transparent;border:0;border-radius:0;width:28px;height:28px}
+.ribbon-badge::before{display:none}
+.ribbon-badge i{filter:none;color:#a6e7df}
+.callout{padding:24px 0;margin-top:32px;border-top:1px solid var(--reading-rule)}
+.story-media-grid{margin-top:40px}
+.story-widget{padding:0}
+.socialbar-card{padding:28px 0;border-block:1px solid var(--reading-rule)}
+.route-card.route-image{padding:0;transform:none}
+.route-img{border:0}
+.gcard{margin:0}
+
+.timeline,.faq-list{max-width:none}
+.timeline{gap:0}
+.timeline::before{display:none}
+.timeline-item{gap:24px;margin:0;padding:28px 0;border-top:1px solid var(--reading-rule)}
+.timeline-marker,.timeline-item.is-current .timeline-marker{
+    width:40px;height:40px;background:transparent;border:0;border-radius:0;
+    color:#a6e7df;font-size:18px;font-weight:600;
+}
+.timeline-body{padding:0;gap:12px}
+.community-widget{padding:0;gap:48px;align-items:start}
+.community-copy{gap:24px}
+.community-copy .section-title{margin-bottom:0}
+.community-panel{padding:24px 0 0;border-top:1px solid var(--reading-rule)}
+.community-eyebrow,.community-point{border:0;border-radius:0;background:transparent;padding:0}
+.community-eyebrow{color:#a6e7df}
+.community-points{gap:16px}
+.community-panel-subtitle{text-transform:none;letter-spacing:0}
+.email-signup-card{padding:0}
+.email-signup-input{box-shadow:none;border-color:rgba(220,230,250,.3)}
+.sponsor-table-tag{padding:0;background:transparent;border:0;border-radius:0;text-transform:none;letter-spacing:0}
+.faq-list{gap:0}
+.faq-item,.faq-item:hover,.faq-item:focus-within{
+    border:0;border-top:1px solid var(--reading-rule);border-radius:0;background:transparent;box-shadow:none;
+}
+.faq-item:last-child{border-bottom:1px solid var(--reading-rule)}
+.faq-item summary{padding:22px 0}
+.faq-body{padding:0 40px 24px 0;max-width:72ch;line-height:1.8}
+.writeup-hero{padding:24px 0 36px;border-bottom:1px solid var(--reading-rule)}
+.writeup-grid{gap:48px}
+.writeup-main{gap:36px}
+.writeup-section{padding:0}
+.aside-card{padding:24px 0 0;border-top:1px solid var(--reading-rule)}
+.writeup-aside{gap:32px}
+
+@media (min-width:760px){
+    .impact-flagship .impact-body{padding:8px 0}
+}
+@media (max-width:759px){
+    .impact-flagship{gap:24px}
+    .section-head{margin-bottom:28px}
+}
+@media (max-width:700px){
+    .shirtlab-feature{padding:0;gap:32px}
+    .community-widget{padding:0;gap:36px}
+    .community-panel{padding:24px 0 0}
+    .writeup-grid{gap:36px}
+}
+@media (max-width:480px){
+    .timeline-item{grid-template-columns:28px minmax(0,1fr);gap:12px}
+    .timeline-marker{width:28px;height:32px}
+    .timeline-body{padding:0}
+    .timeline-body p{font-size:16px}
+    .sponsor-table tbody tr{padding:24px 0}
+    .video-top{padding:0 0 12px}
+    .video-caption{padding:14px 0 0}
+}
