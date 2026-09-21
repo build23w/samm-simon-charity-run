@@ -3,7 +3,7 @@ This repository operates the public site for **Samm Simon Charity & Community In
 https://sammsimon.ca (GitHub Pages, custom domain via `CNAME`).
 
 The site began as the campaign page for Samm's 251 km epic run for cancer (Stratford, Ontario to
-the Tobermory pier, completed May 11, 2026, over $35,000 raised). The run is complete and the site
+the Tobermory pier, completed May 17, 2026, over $35,000 raised). The run is complete and the site
 is now the permanent home for that story **and** for every charity and community initiative that
 follows it. One run started it; the mission continues.
 
@@ -13,7 +13,7 @@ follows it. One run started it; the mission continues.
   amount raised, date, outcome.
 - Maintain a respectful, privacy-first tone in all copy.
 - Drive supporters to key action channels:
-  - Donate via GoFundMe (the run's fundraiser is still open)
+  - View the GoFundMe fundraiser (donations paused as of September 21, 2026)
   - Follow updates via Home Renovation Reviews (https://home.renovation.reviews)
   - Share campaign links and community content
 
@@ -55,8 +55,8 @@ what can be checked, and leave the rest out rather than showing a blank.
 
 ## Facts policy
 - Never invent donors, beneficiaries, organizations, totals, dates, media coverage or partners.
-- Verified figures on the site today: 251 km; completed May 11, 2026; initial GoFundMe goal
-  $4,500; over $35,000 raised; 100% split evenly between London Health Sciences Centre – Cancer
+- Verified figures on the site today: 251 km; completed May 17, 2026; initial GoFundMe goal
+  $4,500; over $35,000 historical milestone; intended equal allocation between London Health Sciences Centre – Cancer
   Program, Stratford General Hospital (ER) and Wellspring Stratford Cancer Centre. The African crypto
   charity initiative raised **almost $25,000** for people in Africa using $RENO coin (a Solana meme
   coin, the community reward token of home.renovation.reviews) and was made possible by the
@@ -121,3 +121,10 @@ A content or UX update is considered complete when:
 3. Every internal anchor and every new link resolves; no broken links or visual regressions.
 4. Privacy-respectful tone is preserved throughout.
 5. `sitemap.xml` lists every indexable page.
+
+
+## Sourced factual correction — September 21, 2026
+
+Run dates: May 11–17, 2026. LHSF documents the start; StratfordToday reports the finish. Earlier May 11 completion references were incorrect. GoFundMe displays CAD $38,660 with donations paused as of September 21, 2026; this does not establish funds disbursed. Preserve historical $35,000 milestones. Preserve the #countdown compatibility anchor used by regional news backlinks. The archived event has no invented EventCompleted status or ticket offer.
+
+The additive reference pages are `/about.html`, `/projects.html` and `/media.html`. Keep their identity references aligned with `https://sammsimon.ca/#samm`; preserve the existing run and initiative URLs.
