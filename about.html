@@ -23,23 +23,44 @@
 
 		<script type="application/ld+json">{
   "@context": "https://schema.org",
-  "@type": "ProfilePage",
-  "@id": "https://sammsimon.ca/about.html#webpage",
-  "url": "https://sammsimon.ca/about.html",
-  "name": "About Samm Simon",
-  "description": "Samm Simon of Stratford, Ontario, organized the 251 km run for local cancer care. Learn about the run, his projects and where to follow him.",
-  "isPartOf": {
-    "@id": "https://sammsimon.ca/#website"
-  },
-  "about": {
-    "@id": "https://sammsimon.ca/#samm"
-  },
-  "mainEntity": {
-    "@type": "Person",
-    "@id": "https://sammsimon.ca/#samm",
-    "name": "Samm Simon",
-    "url": "https://sammsimon.ca/"
-  }
+  "@graph": [
+    {
+      "@type": "ProfilePage",
+      "@id": "https://sammsimon.ca/about.html#webpage",
+      "url": "https://sammsimon.ca/about.html",
+      "name": "About Samm Simon",
+      "description": "Samm Simon of Stratford, Ontario, organized the 251 km run for local cancer care. Learn about the run, his projects and where to follow him.",
+      "isPartOf": {
+        "@id": "https://sammsimon.ca/#website"
+      },
+      "about": {
+        "@id": "https://sammsimon.ca/#samm"
+      },
+      "mainEntity": {
+        "@type": "Person",
+        "@id": "https://sammsimon.ca/#samm",
+        "name": "Samm Simon",
+        "url": "https://sammsimon.ca/"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://sammsimon.ca/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "About Samm Simon",
+          "item": "https://sammsimon.ca/about.html"
+        }
+      ]
+    }
+  ]
 }</script>
 
 		<link rel="icon" href="/public/gallery/samm-run-1.png" />
@@ -63,7 +84,7 @@
 			referrerpolicy="no-referrer"
 		/>
 
-		<link rel="stylesheet" href="/public/styles/styles.css?v=20260919-1" />
+		<link rel="stylesheet" href="/public/styles/styles.css?v=20260921-2" />
 		<!-- Google tag (gtag.js) -->
 		<script async src="https://www.googletagmanager.com/gtag/js?id=G-WMC7YJ90G8"></script>
 		<script>
@@ -115,7 +136,7 @@
 			</div>
 		</header>
 
-		<main id="main" class="writeup"><div class="container"><ol class="breadcrumb" aria-label="Breadcrumb"><li><a href="/">Home</a></li><li aria-current="page">About Samm Simon</li></ol><section class="writeup-hero"><h1 class="writeup-title">About Samm Simon</h1><p class="writeup-lede">Samm Simon of Stratford, Ontario, organized the 251 km run for local cancer care. Learn about the run, his projects and where to follow him.</p></section><div class="writeup-main"><section class="writeup-section"><h2>The run that brought people together</h2><p>Samm Simon is from Stratford, Ontario. He organized a 251 km run from Stratford to the Tobermory pier in support of local cancer care. The run began May 11 and finished May 17, 2026.</p><p>The <a href="initiatives/251-km-charity-run.html">full run story</a> preserves the route, community support and fundraising details. The dates are supported by <a href="https://lhsf.ca/news/stratford-man-runs-251-km-support-local-cancer-care-honour-wife">London Health Sciences Foundation</a> and <a href="https://www.stratfordtoday.ca/local-news/must-read-simon-raises-more-than-33000-with-week-long-run-from-stratford-to-tobermory-12318405">StratfordToday</a>.</p></section><section class="writeup-section"><h2>Projects and community</h2><p>This site also documents an African crypto charity initiative and the Shirtlab initiative for Canadians in need. <a href="projects.html">Explore the projects and their connections</a>.</p><p>LF Builders sponsored the run, and Home Renovation Reviews hosted community updates. Those relationships are part of the run's story.</p></section><section class="writeup-section"><h2>Follow Samm</h2><ul><li><a href="https://www.facebook.com/samm.siomon">Samm on Facebook</a></li><li><a href="https://www.tiktok.com/@sammsimon1968">Samm on TikTok</a></li><li><a href="https://www.youtube.com/@SammSimon">Samm on YouTube</a></li></ul><p>For coverage and source material, visit <a href="media.html">media and run facts</a>. To get in touch, email <a href="mailto:charity@sammsimon.ca">charity@sammsimon.ca</a>.</p></section></div><nav class="hero-ctas" aria-label="More about Samm"><a href="about.html">About Samm</a><a href="projects.html">Projects</a><a href="media.html">Media and run facts</a></nav></div></main>
+		<main id="main" class="writeup"><div class="container"><ol class="breadcrumb" aria-label="Breadcrumb"><li><a href="/">Home</a></li><li aria-current="page">About Samm Simon</li></ol><nav class="hub-nav" aria-label="Explore Samm Simon"><a href="/about.html" aria-current="page">About Samm</a><a href="/projects.html">Projects &amp; community</a><a href="/media.html">Media &amp; run facts</a></nav><section class="writeup-hero"><h1 class="writeup-title">About Samm Simon</h1><p class="writeup-lede">Samm Simon of Stratford, Ontario, organized the 251 km run for local cancer care. Learn about the run, his projects and where to follow him.</p></section><div class="writeup-main"><section class="writeup-section"><h2>The run that brought people together</h2><p>Samm Simon is from Stratford, Ontario. He organized a 251 km run from Stratford to the Tobermory pier in support of local cancer care. The run began May 11 and finished May 17, 2026.</p><p>The <a href="initiatives/251-km-charity-run.html">full run story</a> preserves the route, community support and fundraising details. The dates are supported by <a href="https://lhsf.ca/news/stratford-man-runs-251-km-support-local-cancer-care-honour-wife">London Health Sciences Foundation</a> and <a href="https://www.stratfordtoday.ca/local-news/must-read-simon-raises-more-than-33000-with-week-long-run-from-stratford-to-tobermory-12318405">StratfordToday</a>.</p></section><section class="writeup-section"><h2>Projects and community</h2><p>This site also documents an African crypto charity initiative and the Shirtlab initiative for Canadians in need. <a href="projects.html">Explore the projects and their connections</a>.</p><p>LF Builders sponsored the run, and Home Renovation Reviews hosted community updates. Those relationships are part of the run's story.</p></section><section class="writeup-section"><h2>Follow Samm</h2><ul><li><a href="https://www.facebook.com/samm.siomon">Samm on Facebook</a></li><li><a href="https://www.tiktok.com/@sammsimon1968">Samm on TikTok</a></li><li><a href="https://www.youtube.com/@SammSimon">Samm on YouTube</a></li></ul><p>For coverage and source material, visit <a href="media.html">media and run facts</a>. To get in touch, email <a href="mailto:charity@sammsimon.ca">charity@sammsimon.ca</a>.</p></section></div></div></main>
 
 		<footer class="footer" aria-label="Footer">
 			<div class="container footer-grid">
@@ -131,6 +152,9 @@
 						Thanks for supporting local cancer care, and for sticking around for whatever Samm takes on next.
 					</p>
 					<nav class="footer-links" aria-label="Footer">
+<a href="/about.html">About Samm</a>
+<a href="/projects.html">Projects &amp; community</a>
+<a href="/media.html">Media &amp; run facts</a>
 						<a href="/">Home</a>
 						<a href="/#story">The 251 km Run</a>
 						<a href="/#impact">Impact</a>
