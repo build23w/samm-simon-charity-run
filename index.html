@@ -20,6 +20,9 @@
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content="https://sammsimon.ca/" />
 		<meta property="og:image" content="https://sammsimon.ca/public/gallery/samm-meta-cancer-ribbon-responsive.png" />
+		<meta property="og:image:width" content="1536" />
+		<meta property="og:image:height" content="1024" />
+		<meta property="og:image:alt" content="Samm Simon and the cancer ribbon for his 251 km charity run" />
 		<link rel="canonical" href="https://sammsimon.ca/" />
 
 		<meta name="twitter:card" content="summary_large_image" />
@@ -29,11 +32,13 @@
 			content="251 km completed and over $35,000 raised for local cancer care. Meet Samm’s third charity project: $1 from every Shirtlab purchase helps Canadians in need."
 		/>
 		<meta name="twitter:image" content="https://sammsimon.ca/public/gallery/samm-meta-cancer-ribbon-responsive.png" />
+		<meta name="twitter:image:alt" content="Samm Simon and the cancer ribbon for his 251 km charity run" />
 
 		<script type="application/ld+json">
 			{
 				"@context": "https://schema.org",
 				"@type": "Event",
+				"@id": "https://sammsimon.ca/#epic-run",
 				"name": "Samm Simon Epic Run for Cancer (251 km)",
 				"startDate": "2026-05-11",
 				"endDate": "2026-05-17",
@@ -42,11 +47,7 @@
 				"url": "https://sammsimon.ca/",
 				"image": ["https://sammsimon.ca/public/gallery/samm-meta-cancer-ribbon-responsive.png"],
 				"description": "Samm completed his 251 km epic run for cancer from Stratford, Ontario to the Tobermory pier on May 17, 2026, raising over $35,000 for local cancer-care charities.",
-				"performer": {
-					"@type": "Person",
-					"name": "Samm Simon",
-					"url": "https://sammsimon.ca/"
-				},
+				"performer": { "@id": "https://sammsimon.ca/#samm" },
 				"location": {
 					"@type": "Place",
 					"name": "Stratford, Ontario",
@@ -57,11 +58,7 @@
 						"addressCountry": "CA"
 					}
 				},
-				"organizer": {
-					"@type": "Person",
-					"name": "Samm Simon",
-					"url": "https://sammsimon.ca/"
-				}
+				"organizer": { "@id": "https://sammsimon.ca/#samm" }
 			}
 		</script>
 
@@ -98,7 +95,7 @@
 						"url": "https://sammsimon.ca/",
 						"name": "Samm Simon Epic Run for Cancer - 251 KM Charity Run & Community Initiatives",
 						"isPartOf": { "@id": "https://sammsimon.ca/#website" },
-						"about": { "@id": "https://sammsimon.ca/#samm" },
+						"about": [{ "@id": "https://sammsimon.ca/#samm" }, { "@id": "https://sammsimon.ca/#epic-run" }],
 						"inLanguage": "en-CA"
 					}
 				]
@@ -126,7 +123,7 @@
 			referrerpolicy="no-referrer"
 		/>
 
-		<link rel="stylesheet" href="public/styles/styles.css?v=20260921-2" />
+		<link rel="stylesheet" href="public/styles/styles.css?v=20260922-1" />
 		<!-- Google tag (gtag.js) -->
 		<script async src="https://www.googletagmanager.com/gtag/js?id=G-WMC7YJ90G8"></script>
 			<script>
@@ -188,8 +185,8 @@
                         </p>
 
                         <div class="hero-ctas reveal">
-                            <a class="btn btn-primary btn-lg" href="#shirtlab">Meet Samm’s next chapter <i class="fa-solid fa-arrow-down" aria-hidden="true"></i></a>
-                            <a class="btn btn-ghost btn-lg" href="#story">Read the run story</a>
+                            <a class="btn btn-primary btn-lg" href="initiatives/251-km-charity-run.html">Read the 251 km run story <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                            <a class="btn btn-ghost btn-lg" href="projects.html">Explore Samm’s projects</a>
                         </div>
                         <p class="hero-note">From Stratford, Ontario. With a community that keeps showing up.</p>
 					</div>
@@ -430,9 +427,9 @@
 								<h3>CTV News London</h3>
 								<a class="story-widget-link" href="https://www.youtube.com/watch?v=jcI2cZC3m1o" target="_blank" rel="noopener noreferrer">Open video</a>
 							</div>
-							<div class="story-widget-frame">
-								<iframe src="https://www.youtube.com/embed/jcI2cZC3m1o?si=aB-jUToOXb_deqTI" title="CTV News London story about Samm Simon" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
-							</div>
+							<div class="story-widget-frame" data-embed-src="https://www.youtube-nocookie.com/embed/jcI2cZC3m1o?autoplay=1" data-embed-title="CTV News London story about Samm Simon">
+                                <button class="story-widget-play" type="button" data-embed-load aria-label="Play CTV News London segment"><span class="play-circle" aria-hidden="true"><i class="fa-solid fa-play"></i></span><span>Play CTV segment</span></button>
+                            </div>
 							<p class="story-widget-caption">
 								Official CTV segment covering the Stratford-to-Tobermory charity run and fundraising mission.
 							</p>
@@ -443,9 +440,9 @@
 								<h3>CTV News London (Latest)</h3>
 								<a class="story-widget-link" href="https://embed.jasperplayer.com?brand=CTV_NEWS&destination=ctvnews_web&language=EN&contentId=3369265" target="_blank" rel="noopener noreferrer">Open latest segment</a>
 							</div>
-							<div class="story-widget-frame">
-								<iframe width="560" height="315" src="https://embed.jasperplayer.com?brand=CTV_NEWS&destination=ctvnews_web&language=EN&contentId=3369265" title="CTV News latest segment about Samm Simon" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-							</div>
+							<div class="story-widget-frame" data-embed-src="https://embed.jasperplayer.com?brand=CTV_NEWS&amp;destination=ctvnews_web&amp;language=EN&amp;contentId=3369265" data-embed-title="CTV News latest segment about Samm Simon">
+                                <button class="story-widget-play" type="button" data-embed-load aria-label="Play latest CTV News segment"><span class="play-circle" aria-hidden="true"><i class="fa-solid fa-play"></i></span><span>Play latest CTV segment</span></button>
+                            </div>
 							<p class="story-widget-caption">
 								Newest CTV News segment highlighting Samm's campaign momentum and community support.
 							</p>
@@ -869,7 +866,8 @@
 			<section class="section" id="gofundme" aria-label="GoFundMe">
 				<div class="container">
 					<p class="gfm-note reveal">As of September 21, 2026, GoFundMe displays CAD $38,660 raised and donations are paused. The fundraiser names three local cancer-care organizations as the intended equal beneficiaries. This is the displayed fundraising total, not a confirmation of disbursement.</p>
-					<div class="gfm-embed" data-url="https://www.gofundme.com/f/2mspu-charity-run/widget/large?sharesheet=undefined&attribution_id=sl:ed6d8871-e8e9-4229-b11d-044ec9d1a86f"></div><script defer src="https://www.gofundme.com/static/js/embed.js"></script>
+					<div class="fundraiser-actions"><button class="btn btn-ghost" type="button" data-load-gofundme>Show fundraiser details</button><a class="text-link" href="https://www.gofundme.com/f/2mspu-charity-run" target="_blank" rel="noopener noreferrer">View fundraiser on GoFundMe <span aria-hidden="true">↗</span></a></div>
+                    <div class="gfm-embed" data-url="https://www.gofundme.com/f/2mspu-charity-run/widget/large?sharesheet=undefined&amp;attribution_id=sl:ed6d8871-e8e9-4229-b11d-044ec9d1a86f"></div>
 				</div>
 			</section>
 
@@ -1273,14 +1271,6 @@
 				<i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
 			</a>
 		</nav>
-
-		<!-- Facebook SDK -->
-		<script>
-			window.fbAsyncInit = function() {
-				FB.XFBML.parse();
-			};
-		</script>
-		<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v18.0"></script>
-		<script src="public/scripts/app.js?v=20260914-2" defer></script>
+		<script src="public/scripts/app.js?v=20260922-1" defer></script>
 	</body>
 </html>

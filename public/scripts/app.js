@@ -117,6 +117,47 @@
         });
     });
 
+    // News players stay dormant until requested; the publisher links remain usable without JavaScript.
+    $$("[data-embed-load]").forEach(function (button) {
+        button.addEventListener("click", function () {
+            var frame = button.closest("[data-embed-src]");
+            if (!frame) return;
+            var url = frame.getAttribute("data-embed-src") || "";
+            if (!/^https:\/\/(www\.youtube-nocookie\.com\/embed\/|embed\.jasperplayer\.com\?)/.test(url)) return;
+            var player = document.createElement("iframe");
+            player.src = url;
+            player.title = frame.getAttribute("data-embed-title") || "News coverage of Samm Simon";
+            player.allow = "autoplay; clipboard-write; encrypted-media; picture-in-picture";
+            player.referrerPolicy = "strict-origin-when-cross-origin";
+            player.allowFullscreen = true;
+            frame.replaceChildren(player);
+            player.focus();
+        });
+    });
+
+    // Keep the third-party fundraiser widget off the page until a visitor requests it.
+    var fundraiserButton = $("[data-load-gofundme]");
+    if (fundraiserButton) {
+        fundraiserButton.addEventListener("click", function () {
+            if (fundraiserButton.disabled) return;
+            fundraiserButton.disabled = true;
+            fundraiserButton.textContent = "Loading fundraiser details…";
+            var embed = $(".gfm-embed[data-url]");
+            if (!embed) return;
+            var url = embed.getAttribute("data-url") || "";
+            if (!/^https:\/\/www\.gofundme\.com\/f\/2mspu-charity-run\/widget\/large\?/.test(url)) return;
+            var frame = document.createElement("iframe");
+            frame.src = url;
+            frame.title = "Samm Simon GoFundMe fundraiser details";
+            frame.width = "520";
+            frame.height = "500";
+            frame.loading = "lazy";
+            frame.referrerPolicy = "strict-origin-when-cross-origin";
+            embed.appendChild(frame);
+            fundraiserButton.textContent = "Fundraiser details loaded";
+        });
+    }
+
     var flyout = $("[data-social-flyout]");
     if (flyout) {
         function updateFlyout() {
