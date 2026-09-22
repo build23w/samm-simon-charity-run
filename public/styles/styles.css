@@ -3299,3 +3299,12 @@ body{background:#0d1630}
 .connection-summary{border-top:1px solid var(--reading-rule)}
 @media(max-width:700px){.project-feature,.connection-grid-two{grid-template-columns:1fr}.project-feature{padding:24px}.project-directory{gap:40px}.project-facts{grid-template-columns:repeat(2,minmax(0,1fr))}.hub-nav{gap:8px 20px}}
 @media(max-width:380px){.project-facts{grid-template-columns:1fr}}
+
+/* The fundraiser keeps a direct link when its optional widget is not loaded. */
+.fundraiser-actions{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:12px 22px;margin:20px auto 0}
+.fundraiser-actions .text-link{max-width:28ch}
+#gofundme .gfm-embed:empty{display:none}
+
+.story-widget-play{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;border:0;background:linear-gradient(150deg,#172743,#0b152b);color:#fff;cursor:pointer;font:inherit;font-weight:600;text-align:center}
+.story-widget-play:hover{background:linear-gradient(150deg,#1d3554,#112544)}
+.story-widget-play:focus-visible{outline:3px solid #a6e7df;outline-offset:-5px}
