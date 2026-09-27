@@ -29,7 +29,7 @@
 		<main id="main" class="unsub-wrap" aria-label="Unsubscribe">
 			<div class="container unsub-card">
 				<div class="email-signup-card">
-					<form action="https://api.lfbuilders.ca/sammsimon/mail/inquiry" method="post" class="email-signup-form" target="_blank" novalidate>
+					<form action="https://api.lfbuilders.ca/sammsimon/unsubscribe" method="post" class="email-signup-form" novalidate>
 						<h2 class="email-signup-title">Unsubscribe from Samm's updates</h2>
 						<p class="email-signup-subtitle">
 							Enter your email and we'll mark it as unsubscribed.
@@ -134,23 +134,9 @@
 					}
 				}
 
-				function shouldShowSuccessFromUrl() {
-					try {
-						const params = new URLSearchParams(window.location.search);
-						return params.get('unsub') === '1' && !!(params.get('EMAIL') || params.get('email') || params.get('e'));
-					} catch {
-						return false;
-					}
-				}
-
 				// Prefill email when present.
 				const preset = normalizeEmail(getPrefillEmail());
 				if (preset) emailInput.value = preset;
-
-				// If they arrived here after submitting (GET round-trip), show success.
-				if (shouldShowSuccessFromUrl()) {
-					setStatus("You're now unsubscribed.", 'ok');
-				}
 
 				function toUrlEncodedBody(formEl, email) {
 					const fd = new FormData(formEl);
@@ -160,7 +146,7 @@
 					return params.toString();
 				}
 
-				// JS enhancement: submit without leaving the page, but still POST to the API.
+				// Stay on sammsimon.ca and confirm only after the preference is stored.
 				form.addEventListener('submit', async (e) => {
 					const email = normalizeEmail(emailInput.value);
 					if (!email) {
@@ -190,7 +176,7 @@
 					try {
 						const res = await fetch(form.action, {
 							method: 'POST',
-							headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
+						headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8', 'Accept': 'application/json' },
 							body: toUrlEncodedBody(form, email),
 							mode: 'cors',
 							credentials: 'omit',
@@ -198,30 +184,13 @@
 							keepalive: true,
 						});
 
-						// If the API blocks CORS, this will throw before here.
 						if (!res || !res.ok) throw new Error('Unsubscribe request failed');
 					} catch {
-						// Fallback: do a real form POST (will open a new tab due to target=_blank).
-						try {
-							form.submit();
-						} catch {
-							// ignore
-						}
+						setStatus("We couldn't save your request. Please try again.", 'warn');
 						return;
 					}
 
 					setStatus("You're now unsubscribed.", 'ok');
-
-					try {
-						const url = new URL(window.location.href);
-						// Prefer a lowercase param for nicer share links, but keep compatibility.
-						url.searchParams.set('email', email);
-						url.searchParams.delete('EMAIL');
-						url.searchParams.set('unsub', '1');
-						window.history.replaceState({}, '', url.toString());
-					} catch {
-						// ignore
-					}
 				});
 			})();
 		</script>
